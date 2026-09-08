@@ -71,10 +71,10 @@ formulario.addEventListener("submit", (evento) => {
 
  const consultas = carregar();
 
-  if (!nova.hora) {
-   mensagem.textContent = "O horário é obrigatório.";
-   return;
-}
+  if (!nova.paciente || !nova.profissional || !nova.data) {
+    mensagem.textContent = "Preencha todos os campos obrigatórios.";
+    return;
+  }
 
   if (horarioOcupado(consultas, nova)) {
     mensagem.textContent = "erro";
