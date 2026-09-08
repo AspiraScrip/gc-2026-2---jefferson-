@@ -69,14 +69,12 @@ function renderizar() {
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
-  const nova = {
-    paciente: document.getElementById("paciente").value.trim(),
-    profissional: document.getElementById("profissional").value,
-    data: document.getElementById("data").value,
-    hora: document.getElementById("hora").value,
-  };
+ const consultas = carregar();
 
-  const consultas = carregar();
+  if (!nova.hora) {
+   mensagem.textContent = "O horário é obrigatório.";
+   return;
+}
 
   if (horarioOcupado(consultas, nova)) {
     mensagem.textContent = "erro";
